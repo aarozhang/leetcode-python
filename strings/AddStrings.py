@@ -11,6 +11,7 @@ class Solution:
         while p1 >= 0 or p2 >= 0:
             n1, n2 = 0, 0
 
+            # if p1 or p2 is not at end of number, store its value
             if (p1 >= 0):
                 n1 = ord(num1[p1]) - ord('0')
 
@@ -20,14 +21,15 @@ class Solution:
             i = max(p1, p2)
 
             sum = n1 + n2 + carry
-            val = sum % 10
-            carry = sum // 10
+            val = sum % 10  # this is ones digit
+            carry = sum // 10  # floor will provide either 0 or 1
 
             res.append(val)
 
             p1 -= 1
             p2 -= 1
 
+        # edge case. add final carry if exists
         if carry:
             res.append(carry)
 
